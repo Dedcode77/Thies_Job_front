@@ -1,9 +1,16 @@
 import React from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import userRoutes from "./routes/userRoutes";
+
 
 export default function App() {
   return (
-    <div className="bg-gray-400">
-      <h1>Bonjour tres chers</h1>
-    </div>
+    <Router>
+      <Routes>
+        {userRoutes.map(({ path, element }) => (
+          <Route key={path} path={path} element={element} />
+        ))}
+      </Routes>
+    </Router>
   );
 }
