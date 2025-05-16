@@ -1,9 +1,10 @@
 import React from "react";
+import Layout from "./layouts/Layout";
 
 export default function App() {
   return (
-    <div className="bg-gray-400">
-      <h1>Bonjour tres chers</h1>
+    <div>
+      <Layout />
     </div>
   );
 }
