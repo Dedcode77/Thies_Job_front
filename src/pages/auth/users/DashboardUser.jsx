@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Carousel from "../../../components/Carousel";
 import Chart from "../../../components/Chart";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const DashboardUser = () => {
+  const [isOpenWelcome, setIsOpenWelcome] = useState(false);
+
   return (
     <div className="p-6 min-h-screen max-sm:p-0 max-sm:m-2">
       {/* Section Annonces */}
@@ -13,7 +17,7 @@ const DashboardUser = () => {
           Tableau de Bord
         </h2>
         <div className="flex flex-col lg:flex-row gap-4">
-          <div className="bg-white p-4 rounded-lg shadow-md w-1/2">
+          <div className="bg-white p-4 rounded-lg shadow-md w-1/2 max-lg:w-full">
             <h3 className="text-lg font-semibold mb-2">
               Bienvenue sur votre espace SEN JOB.sn
             </h3>
@@ -25,20 +29,31 @@ const DashboardUser = () => {
               plateforme complète pour explorer, postuler et suivre vos
               candidatures.
             </p>
-            <p className="text-gray-700 mb-4">
-              Parcourez les annonces actualisées, postulez rapidement pour
-              maximiser vos chances et profitez de nos suggestions de formations
-              pour rester compétitif sur le marché du travail. Nous sommes là
-              pour vous accompagner dans votre recherche d'emploi.
-            </p>
-            <p className="text-sm text-gray-600">
+            <p>
               Consultez les annonces disponibles et postulez rapidement pour
               maximiser vos chances ! Ne manquez pas les formations recommandées
               pour développer de nouvelles compétences et améliorer votre
               employabilité.
             </p>
+            {isOpenWelcome && (
+              <p className="text-gray-700 mb-4">
+                Parcourez les annonces actualisées, postulez rapidement pour
+                maximiser vos chances et profitez de nos suggestions de
+                formations pour rester compétitif sur le marché du travail. Nous
+                sommes là pour vous accompagner dans votre recherche d'emploi.
+              </p>
+            )}
+            <button
+              onClick={() => setIsOpenWelcome(!isOpenWelcome)}
+              className="bg-blue-500 text-white px-4 py-2 rounded-md mt-2 flex items-center gap-2"
+            >
+              {isOpenWelcome ? "Moins" : "Plus"}
+              <FontAwesomeIcon
+                icon={isOpenWelcome ? faArrowLeft : faArrowDown}
+              />
+            </button>
           </div>
-          <div className="w-1/2">
+          <div className="w-1/2 max-lg:w-full">
             <Carousel />
           </div>
         </div>
