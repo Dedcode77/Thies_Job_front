@@ -13,7 +13,7 @@ const DashboardUser = () => {
           Tableau de Bord
         </h2>
         <div className="flex flex-col lg:flex-row gap-4">
-          <div className="bg-white p-4 rounded-lg shadow-md flex-1">
+          <div className="bg-white p-4 rounded-lg shadow-md w-1/2">
             <h3 className="text-lg font-semibold mb-2">
               Bienvenue sur votre espace SEN JOB.sn
             </h3>
@@ -25,7 +25,7 @@ const DashboardUser = () => {
               plateforme complète pour explorer, postuler et suivre vos
               candidatures.
             </p>
-            <p className="text-gray-700 mb-4">
+            {/* <p className="text-gray-700 mb-4">
               Parcourez les annonces actualisées, postulez rapidement pour
               maximiser vos chances et profitez de nos suggestions de formations
               pour rester compétitif sur le marché du travail. Nous sommes là
@@ -36,9 +36,11 @@ const DashboardUser = () => {
               maximiser vos chances ! Ne manquez pas les formations recommandées
               pour développer de nouvelles compétences et améliorer votre
               employabilité.
-            </p>
+            </p> */}
           </div>
-          <Carousel />
+          <div className="w-1/2">
+            <Carousel />
+          </div>
         </div>
       </div>
 
