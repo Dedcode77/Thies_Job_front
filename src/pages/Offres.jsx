@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Connexion() {
+function Offres() {
   return (
     <div>
-      <h1></h1>
+      <h1>Offres</h1>
     </div>
   )
 }
 
-export default Connexion
+export default Offres
