@@ -25,7 +25,7 @@ const DashboardUser = () => {
               plateforme complète pour explorer, postuler et suivre vos
               candidatures.
             </p>
-            {/* <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 mb-4">
               Parcourez les annonces actualisées, postulez rapidement pour
               maximiser vos chances et profitez de nos suggestions de formations
               pour rester compétitif sur le marché du travail. Nous sommes là
@@ -36,7 +36,7 @@ const DashboardUser = () => {
               maximiser vos chances ! Ne manquez pas les formations recommandées
               pour développer de nouvelles compétences et améliorer votre
               employabilité.
-            </p> */}
+            </p>
           </div>
           <div className="w-1/2">
             <Carousel />
