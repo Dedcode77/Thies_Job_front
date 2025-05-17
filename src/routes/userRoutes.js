@@ -1,13 +1,10 @@
-import Dashboard from "../pages/Dashboard";
-import Acceuil from "../pages/Accueil";
-import Connexion from "../pages/auth/Connexion";
-import Inscription from "../pages/auth/Inscription";
+import { path } from "framer-motion/client";
+import DashboardUser from "../pages/auth/users/DashboardUser";
+import ProfileUser from "../pages/auth/users/ProfileUser";
 
 const userRoutes = [
-  { path: "/", element: Acceuil },
-  { path: "/login", element: Connexion },
-  { path: "/register", element: Inscription },
-  { path: "/dashboard", element: Dashboard },
+  { path: "/dashboard", element: DashboardUser },
+  { path: "/profileUser", element: ProfileUser },
 ];
 
 export default userRoutes;
