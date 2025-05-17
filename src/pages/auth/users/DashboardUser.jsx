@@ -31,12 +31,12 @@ const DashboardUser = () => {
               pour rester compétitif sur le marché du travail. Nous sommes là
               pour vous accompagner dans votre recherche d'emploi.
             </p>
-            <p className="text-sm text-gray-600">
+            {/* <p className="text-sm text-gray-600">
               Consultez les annonces disponibles et postulez rapidement pour
               maximiser vos chances ! Ne manquez pas les formations recommandées
               pour développer de nouvelles compétences et améliorer votre
               employabilité.
-            </p>
+            </p> */}
           </div>
           <div className="w-1/2">
             <Carousel />
