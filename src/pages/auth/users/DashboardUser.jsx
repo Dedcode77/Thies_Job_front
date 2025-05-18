@@ -29,24 +29,11 @@ const DashboardUser = () => {
               plateforme complète pour explorer, postuler et suivre vos
               candidatures.
             </p>
-<<<<<<< HEAD
-            <p className="text-gray-700 mb-4">
-              Parcourez les annonces actualisées, postulez rapidement pour
-              maximiser vos chances et profitez de nos suggestions de formations
-              pour rester compétitif sur le marché du travail. Nous sommes là
-              pour vous accompagner dans votre recherche d'emploi.
-            </p>
-            {/* <p className="text-sm text-gray-600">
-=======
             <p>
->>>>>>> 8765f7d32fafbf98be454204cdacad77288c4ff0
               Consultez les annonces disponibles et postulez rapidement pour
               maximiser vos chances ! Ne manquez pas les formations recommandées
               pour développer de nouvelles compétences et améliorer votre
               employabilité.
-<<<<<<< HEAD
-            </p> */}
-=======
             </p>
             {isOpenWelcome && (
               <p className="text-gray-700 mb-4">
@@ -65,7 +52,6 @@ const DashboardUser = () => {
                 icon={isOpenWelcome ? faArrowLeft : faArrowDown}
               />
             </button>
->>>>>>> 8765f7d32fafbf98be454204cdacad77288c4ff0
           </div>
           <div className="w-1/2 max-lg:w-full">
             <Carousel />
