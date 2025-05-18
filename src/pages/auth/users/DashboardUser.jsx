@@ -57,7 +57,6 @@ const DashboardUser = () => {
                 icon={isOpenWelcome ? faArrowLeft : faArrowDown}
               />
             </button>
-            >>>>>>> 8765f7d32fafbf98be454204cdacad77288c4ff0
           </div>
           <div className="w-1/2 max-lg:w-full">
             <Carousel />
