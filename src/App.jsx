@@ -4,6 +4,7 @@ import userRoutes from "./routes/userRoutes";
 import Layout from "./layouts/Layout";
 import NotFound from "../NotFound";
 import publicRoutes from "./routes/publicRoutes";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ToastContainer />
     </Router>
   );
 }
