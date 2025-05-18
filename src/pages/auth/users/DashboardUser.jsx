@@ -31,7 +31,16 @@ const DashboardUser = () => {
             <p className="text-gray-700 mb-4">
               Ici, vous trouverez les dernières opportunités d'emploi, vos
               candidatures en cours et des suggestions pour booster vos
-              compétences.
+              compétences. Que vous soyez à la recherche d'un emploi temporaire
+              ou d'une mission longue durée, SEN JOB.sn vous offre une
+              plateforme complète pour explorer, postuler et suivre vos
+              candidatures.
+            </p>
+            <p>
+              Consultez les annonces disponibles et postulez rapidement pour
+              maximiser vos chances ! Ne manquez pas les formations recommandées
+              pour développer de nouvelles compétences et améliorer votre
+              employabilité.
             </p>
             {isOpenWelcome && (
               <p className="text-gray-700 mb-4">
@@ -48,6 +57,7 @@ const DashboardUser = () => {
                 icon={isOpenWelcome ? faArrowLeft : faArrowDown}
               />
             </button>
+            >>>>>>> 8765f7d32fafbf98be454204cdacad77288c4ff0
           </div>
           <div className="w-1/2 max-lg:w-full">
             <Carousel />
