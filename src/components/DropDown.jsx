@@ -2,11 +2,26 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faDoorOpen } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../backend/features/auth/authSlice";
+import { useGetMeQuery } from "../backend/features/auth/authAPI";
 
-export default function Dropdown({ username = "Utilisateur", onLogout }) {
+export default function Dropdown({ username = "Utilisateur" }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
+
+  const { data: user } = useGetMeQuery();
+
+  const isCommunity = user?.role === "community";
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
 
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -34,16 +49,15 @@ export default function Dropdown({ username = "Utilisateur", onLogout }) {
       {menuOpen && (
         <div className="absolute right-0 mt-5 w-40 bg-white rounded-md shadow-lg z-50">
           <div className="py-2 px-4 text-gray-800 border-b font-semibold">
-            <Link to={"/profileUser"}>Profile</Link>
+            <Link to={isCommunity ? "/profileCom" : "/profileUser"}>
+              Profile
+            </Link>
           </div>
           <div className="py-2 px-4 text-gray-800 border-b font-semibold">
             Parametre
           </div>
           <button
-            onClick={() => {
-              setMenuOpen(false);
-              onLogout();
-            }}
+            onClick={handleLogout}
             className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
           >
             Déconnexion <FontAwesomeIcon icon={faDoorOpen} />

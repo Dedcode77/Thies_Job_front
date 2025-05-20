@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
+import React from "react";
 
-const CardOffre = ({ offer, deleteOffre }) => {
-  const [postuler, setPostuler] = useState(false);
-  const handlePostuler = () => {
-    setPostuler(!postuler);
-    toast.success("Postulation envoyé !");
+const CardOffre = ({ offer, deleteOffre, onVoirOffre, isAccepted }) => {
+  const handleAccept = () => {
+    onVoirOffre(offer);
   };
 
   return (
@@ -14,19 +11,29 @@ const CardOffre = ({ offer, deleteOffre }) => {
       <p className="text-gray-700">{offer.company}</p>
       <p className="text-gray-500 text-sm">{offer.location}</p>
       <p className="text-gray-400 text-xs">{offer.date}</p>
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <button
-          onClick={handlePostuler}
+          onClick={handleAccept}
           className="mt-4 px-4 py-2 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-md transition duration-300"
+          disabled={isAccepted}
         >
-          {postuler ? "Postulé" : "Postuler"}
+          {isAccepted ? "Offre acceptée" : "Voir offre"}
         </button>
-        <button
-          onClick={() => deleteOffre(offer.id)}
-          className="mt-4 px-4 py-2 border border-red-500  text-red-500 hover:bg-red-500 hover:text-white rounded-md transition duration-300"
-        >
-          Pas intéressé
-        </button>
+        {!isAccepted ? (
+          <button
+            onClick={() => deleteOffre(offer.id)}
+            className="mt-4 px-4 py-2 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-md transition duration-300"
+          >
+            Supprimer
+          </button>
+        ) : (
+          <div className="relative top-1 text-sm text-nowrap">
+            <p>En attente d'une réponse...</p>
+            <p className="text-gray-500">
+              Vous recevrez une notification par email.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

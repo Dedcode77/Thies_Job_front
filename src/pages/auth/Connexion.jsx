@@ -1,34 +1,56 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useLoginMutation } from "../../backend/features/auth/authAPI";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../backend/features/auth/authSlice";
+import { toast } from "react-toastify";
 
 function Connexion() {
-  const [form, setForm] = useState({
-    nom: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
   const navigate = useNavigate();
+  const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [Login] = useLoginMutation();
 
-    alert(`Nom: ${form.nom}\nMot de passe: ${form.password}`);
+  const onSubmit = async (data) => {
+    try {
+      const response = await Login(data).unwrap();
+      console.log("Response: ", response);
 
-    navigate("/dashboard");
+      dispatch(
+        setCredentials({
+          user: response.user,
+          access: response.access,
+          refresh: response.refresh,
+          role: response.user.role,
+        })
+      );
+
+      toast.success("Vous êtes connecté avec succès");
+
+      const isAdmin = response.user?.role === "community";
+
+      if (isAdmin) {
+        navigate("/dashboard-communaute");
+      } else {
+        navigate("/dashboard");
+      }
+
+      reset();
+    } catch (err) {
+      console.error("Login error: ", err);
+      toast.error("Identifiants incorrects, veuillez réessayer.", err);
+    }
   };
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-gray-50">
       <div className="lg:w-1/2 bg-[url('/src/assets/images/cyton.jpg')] bg-cover bg-center p-8 text-white flex flex-col justify-center relative">
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative z-10">
+        <div className="relative z-10 text-white font-bold bg-black bg-opacity-40 px-6 py-3 rounded animate__animated animate__backInLeft animate__slower">
           <h1 className="text-4xl font-bold mb-4">
             Rejoignez notre communauté
           </h1>
@@ -48,7 +70,7 @@ function Connexion() {
 
       <div className="lg:w-1/2 flex items-center justify-center p-2">
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className="p-8 rounded w-full max-w-md text-black"
         >
           <h1 className="text-3xl font-extrabold mb-4 text-center text-gray-800">
@@ -60,9 +82,7 @@ function Connexion() {
             </label>
             <input
               type="text"
-              name="nom"
-              value={form.nom}
-              onChange={handleChange}
+              {...register("email", { required: true })}
               className="w-full border px-3 py-2 rounded"
               required
             />
@@ -75,8 +95,7 @@ function Connexion() {
             <input
               type="password"
               name="password"
-              value={form.password}
-              onChange={handleChange}
+              {...register("password", { required: true })}
               className="w-full border px-3 py-2 rounded"
               required
             />
