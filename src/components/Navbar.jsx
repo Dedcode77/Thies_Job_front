@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
 import useScroll from "../hooks/useScroll";
 import Dropdown from "./DropDown";
-import profileUser from "../assets/images/ProfileUser.avif";
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faBell, faTimes } from "@fortawesome/free-solid-svg-icons";
 import DropNotification from "./DropNotification";
+import { useGetMeQuery } from "../backend/features/auth/authAPI";
+import profileUser from "../assets/images/user.png";
 
 export default function Navbar() {
+  const { data: user, isLoading, error } = useGetMeQuery();
+
   const isScroll = useScroll();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openNotif, setOpenNotif] = useState(false);
 
   const handleOpenNotif = () => {
     setOpenNotif(!openNotif);
-  };
-
-  const user = {
-    username: "JohnDoe",
   };
 
   const handleLogout = () => {
@@ -88,11 +87,15 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-4">
             <img
-              src={profileUser}
+              src={`http://127.0.0.1:8000${user?.avatar}`}
+              onError={(e) => {
+                e.currentTarget.src = profileUser;
+              }}
               alt="User Avatar"
               className="w-10 h-10 rounded-full object-cover border-2 border-gray-100 shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
             />
-            <Dropdown username={user.username} onLogout={handleLogout} />
+
+            <Dropdown username={user?.full_name} onLogout={handleLogout} />
 
             {/* Notification Icon with Badge */}
             <button

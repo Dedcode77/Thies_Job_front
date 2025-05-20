@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import CardOffre from "./CardOffre";
+import { toast } from "react-toastify";
+import ModalNotif from "./ModalNotif";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 const OffresRecom = () => {
   const [offers, setOffers] = useState([
@@ -9,6 +13,7 @@ const OffresRecom = () => {
       company: "Tech Solutions",
       location: "Dakar, Sénégal",
       date: "Il y a 2 jours",
+      accepted: false,
     },
     {
       id: 2,
@@ -16,6 +21,7 @@ const OffresRecom = () => {
       company: "DesignPro",
       location: "Thiès, Sénégal",
       date: "Il y a 3 jours",
+      accepted: false,
     },
     {
       id: 3,
@@ -23,6 +29,7 @@ const OffresRecom = () => {
       company: "Société Média",
       location: "Saint-Louis, Sénégal",
       date: "Il y a 5 jours",
+      accepted: false,
     },
     {
       id: 4,
@@ -30,12 +37,21 @@ const OffresRecom = () => {
       company: "Bakeli School of technology",
       location: "Dakar, Sénégal",
       date: "Il y a 1 jours",
+      accepted: false,
     },
   ]);
 
+  const [selectedOffer, setSelectedOffer] = useState(null);
+
   const deleteOffre = (id) => {
-    const updatedOffers = offers.filter((offer) => offer.id !== id);
-    setOffers(updatedOffers);
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer cette offre ?")) {
+      toast.success("Offre supprimée avec succès !");
+      setOffers(offers.filter((offer) => offer.id !== id));
+    }
+  };
+
+  const voirOffre = (offer) => {
+    setSelectedOffer(offer);
   };
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -48,6 +64,9 @@ const OffresRecom = () => {
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold mb-4 text-blue-900">
           Offres Recommandées
+          <button className="ms-5">
+            <FontAwesomeIcon icon={faPlusCircle} />
+          </button>
         </h2>
         <input
           type="text"
@@ -59,7 +78,13 @@ const OffresRecom = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredOffers.map((offer) => (
-          <CardOffre key={offer.id} offer={offer} deleteOffre={deleteOffre} />
+          <CardOffre
+            key={offer.id}
+            offer={offer}
+            deleteOffre={deleteOffre}
+            onVoirOffre={voirOffre}
+            isAccepted={offer.accepted}
+          />
         ))}
         {filteredOffers.length === 0 && (
           <div className="col-span-3 text-center text-gray-500">
@@ -67,6 +92,20 @@ const OffresRecom = () => {
           </div>
         )}
       </div>
+
+      <ModalNotif
+        offer={selectedOffer}
+        onClose={() => setSelectedOffer(null)}
+        accepterOffre={(offer) => {
+          setOffers((prevOffers) =>
+            prevOffers.map((o) =>
+              o.id === offer.id ? { ...o, accepted: true } : o
+            )
+          );
+          toast.success(`Vous avez accepté l'offre : ${offer.title}`);
+          setSelectedOffer(null);
+        }}
+      />
     </div>
   );
 };
