@@ -5,10 +5,16 @@ import profileUser from "../assets/images/ProfileUser.avif";
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faBell, faTimes } from "@fortawesome/free-solid-svg-icons";
+import DropNotification from "./DropNotification";
 
 export default function Navbar() {
   const isScroll = useScroll();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openNotif, setOpenNotif] = useState(false);
+
+  const handleOpenNotif = () => {
+    setOpenNotif(!openNotif);
+  };
 
   const user = {
     username: "JohnDoe",
@@ -25,6 +31,16 @@ export default function Navbar() {
     "Aide & Support : Consultez notre FAQ pour plus d'informations.",
   ];
 
+  const notifications = [
+    {
+      id: 1,
+      community: "Développeurs React",
+      message: "Session live ce soir à 18h !",
+    },
+    { id: 2, community: "UI/UX Designers", message: "Concours de design !" },
+    { id: 3, community: "Data Science", message: "Nouveau cours disponible !" },
+  ];
+
   const [currentAnnouncement, setCurrentAnnouncement] = useState(0);
 
   useEffect(() => {
@@ -37,15 +53,15 @@ export default function Navbar() {
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScroll ? "bg-blue-500 shadow-md" : "bg-blue-900"
+        isScroll ? "bg-white shadow-md" : "bg-blue-900 text-white"
       }`}
     >
       <div className="max-w-screen-xl mx-auto flex justify-between items-center px-4 h-16">
-        <h1 className="text-2xl font-bold text-gray-100">SEN JOB.sn</h1>
+        <h1 className="text-2xl font-bold">SEN JOB.sn</h1>
 
         {/* Desktop Annonces */}
         <div className="hidden lg:flex items-center gap-4">
-          <span className="font-bold px-3 text-white">Annonces : </span>
+          <span className="font-bold px-3">Annonces : </span>
           <div className="flex-1">
             <AnimatePresence mode="wait">
               <motion.div
@@ -54,7 +70,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.5 }}
-                className="text-gray-100 text-sm font-medium"
+                className="text-sm font-medium"
               >
                 {announcements[currentAnnouncement]}
               </motion.div>
@@ -65,7 +81,7 @@ export default function Navbar() {
         <div className="flex items-center lg:gap-4">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-white lg:hidden focus:outline-none"
+            className="lg:hidden focus:outline-none"
           >
             <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} size="lg" />
           </button>
@@ -77,11 +93,32 @@ export default function Navbar() {
               className="w-10 h-10 rounded-full object-cover border-2 border-gray-100 shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
             />
             <Dropdown username={user.username} onLogout={handleLogout} />
-            <FontAwesomeIcon icon={faBell} color="white" size="xl" />
+
+            {/* Notification Icon with Badge */}
+            <button
+              onClick={handleOpenNotif}
+              className="relative focus:outline-none"
+            >
+              <FontAwesomeIcon icon={faBell} size="lg" />
+
+              {notifications.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-xs font-bold rounded-full px-1">
+                  {notifications.length}
+                </span>
+              )}
+              {openNotif && (
+                <DropNotification
+                  open={openNotif}
+                  onClose={handleOpenNotif}
+                  notifications={notifications}
+                />
+              )}
+            </button>
           </div>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence mode="wait">
         {isMenuOpen && (
           <motion.div
@@ -89,7 +126,7 @@ export default function Navbar() {
             animate={{ opacity: 1, maxHeight: 300 }}
             exit={{ opacity: 0, maxHeight: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="bg-blue-900 text-white p-4 lg:hidden overflow-hidden"
+            className="bg-blue-900 p-4 lg:hidden overflow-hidden"
           >
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-end gap-4">

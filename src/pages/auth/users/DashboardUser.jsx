@@ -4,14 +4,22 @@ import "slick-carousel/slick/slick-theme.css";
 import Carousel from "../../../components/Carousel";
 import Chart from "../../../components/Chart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowDown,
+  faArrowLeft,
+  faCheckCircle,
+  faFileAlt,
+  faPlus,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import OffresRecom from "../../../components/OffresRecom";
+
 
 const DashboardUser = () => {
   const [isOpenWelcome, setIsOpenWelcome] = useState(false);
 
   return (
     <div className="p-6 min-h-screen max-sm:p-0 max-sm:m-2">
-      {/* Section Annonces */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4 text-blue-900">
           Tableau de Bord
@@ -38,14 +46,12 @@ const DashboardUser = () => {
             {isOpenWelcome && (
               <p className="text-gray-700 mb-4">
                 Parcourez les annonces actualisées, postulez rapidement pour
-                maximiser vos chances et profitez de nos suggestions de
-                formations pour rester compétitif sur le marché du travail. Nous
-                sommes là pour vous accompagner dans votre recherche d'emploi.
+                maximiser vos chances.
               </p>
             )}
             <button
               onClick={() => setIsOpenWelcome(!isOpenWelcome)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md mt-2 flex items-center gap-2"
+              className="px-4 py-2 rounded-md mt-2 flex items-center gap-2 text-blue-500 hover:bg-blue-100 hover:text-blue-700 transition-transform duration-300 ease-in-out hover:translate-y-1"
             >
               {isOpenWelcome ? "Moins" : "Plus"}
               <FontAwesomeIcon
@@ -59,7 +65,6 @@ const DashboardUser = () => {
         </div>
       </div>
 
-      {/* Candidatures en cours */}
       <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white p-4 rounded-lg shadow-md">
           <h3 className="text-lg font-semibold mb-2 text-blue-900">
@@ -73,7 +78,10 @@ const DashboardUser = () => {
                 </h2>
                 <p className="text-xl font-bold">1435</p>
               </div>
-              <span className="text-blue-500 text-3xl">📄</span>
+              <FontAwesomeIcon
+                icon={faFileAlt}
+                className="text-blue-500 text-3xl"
+              />
             </div>
 
             <div className="bg-green-100 p-3 rounded-lg shadow-md flex items-center justify-between">
@@ -83,7 +91,10 @@ const DashboardUser = () => {
                 </h2>
                 <p className="text-xl font-bold">320</p>
               </div>
-              <span className="text-green-500 text-3xl">🆕</span>
+              <FontAwesomeIcon
+                icon={faPlus}
+                className="text-green-500 text-3xl"
+              />
             </div>
 
             <div className="bg-yellow-100 p-3 rounded-lg shadow-md flex items-center justify-between">
@@ -93,7 +104,10 @@ const DashboardUser = () => {
                 </h2>
                 <p className="text-xl font-bold">540</p>
               </div>
-              <span className="text-yellow-500 text-3xl">✅</span>
+              <FontAwesomeIcon
+                icon={faCheckCircle}
+                className="text-yellow-500 text-3xl"
+              />
             </div>
 
             <div className="bg-red-100 p-3 rounded-lg shadow-md flex items-center justify-between">
@@ -103,51 +117,24 @@ const DashboardUser = () => {
                 </h2>
                 <p className="text-xl font-bold">75</p>
               </div>
-              <span className="text-red-500 text-3xl">❌</span>
+              <FontAwesomeIcon
+                icon={faTimesCircle}
+                className="text-red-500 text-3xl"
+              />
             </div>
           </div>
         </div>
 
-        {/* Opportunités Recommandées */}
         <div className="bg-white p-4 rounded-lg shadow-md max-sm:hidden">
           <h3 className="text-lg font-semibold mb-2 text-blue-900">
             Nos Statistiques de l'année precedente
-            <div>
-              <Chart />
-            </div>
           </h3>
+          <Chart />
         </div>
       </div>
 
-      {/* Notifications Récentes */}
-      <div className="mb-8 bg-white p-4 rounded-lg shadow-md">
-        <h3 className="text-lg font-semibold mb-2 text-blue-900">
-          Notifications Récentes
-        </h3>
-        <ul className="space-y-2">
-          <li className="text-sm text-gray-700">
-            Aucune notification pour le moment.
-          </li>
-        </ul>
-      </div>
-
-      {/* Suggestions de Formations / Offres */}
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <h3 className="text-lg font-semibold mb-2 text-blue-900">
-          Formations & Développement
-        </h3>
-        <ul className="space-y-2">
-          <li className="text-sm text-blue-600 cursor-pointer hover:underline">
-            Formation en gestion de projet - Dakar
-          </li>
-          <li className="text-sm text-blue-600 cursor-pointer hover:underline">
-            Marketing digital : les fondamentaux - Thiès
-          </li>
-          <li className="text-sm text-blue-600 cursor-pointer hover:underline">
-            Atelier : Rédiger un CV professionnel - Rufisque
-          </li>
-        </ul>
-      </div>
+      {/* Offres Recommandées */}
+      <OffresRecom />
     </div>
   );
 };

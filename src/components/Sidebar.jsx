@@ -9,6 +9,7 @@ import {
   faFileContract,
   faQuestionCircle,
   faUsers,
+  faClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -32,17 +33,25 @@ const Sidebar = () => {
     >
       {/* Header */}
       <div className="p-4 flex items-center justify-between border-b border-gray-700">
-        {isOpen && <span className="text-xl font-bold">SEN JOB.sn</span>}
+        {isOpen && <span className="text-xl font-bold ml-4">Fermer</span>}
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle sidebar"
           className="text-gray-100 focus:outline-none p-2 rounded-md transition"
         >
-          <FontAwesomeIcon
-            icon={faBars}
-            size="xl"
-            className={`${isOpen ? "" : "mx-1"}`}
-          />
+          {isOpen ? (
+            <FontAwesomeIcon
+              icon={faClose}
+              size="xl"
+              className={`${isOpen ? "" : "mx-1"}`}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faBars}
+              size="xl"
+              className={`${isOpen ? "" : "mx-1"}`}
+            />
+          )}
         </button>
       </div>
 

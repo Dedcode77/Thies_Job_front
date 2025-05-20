@@ -1,20 +1,34 @@
 // src/components/ProfileDropdown.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 export default function Dropdown({ username = "Utilisateur", onLogout }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <div className="relative">
+    <div className="relative py-8" ref={dropdownRef}>
       <button
         onClick={() => setMenuOpen(!menuOpen)}
-        className="text-white flex items-center gap-2 focus:outline-none"
+        className="flex items-center gap-2 focus:outline-none"
       >
         <span className="font-medium">{username}</span>
-        <FontAwesomeIcon icon={faChevronDown} className="text-white" />
+        <FontAwesomeIcon icon={faChevronDown} />
       </button>
 
       {menuOpen && (
