@@ -81,7 +81,7 @@ function ConnexionEntreprise() {
             {isLoading ? "Connexion..." : "Se connecter"}
           </button>
 
-          <div className="flex items-center justify-between mt-6">
+          <div className="flex items-center justify-between mt-6 max-sm:flex-col-reverse gap-4">
             <p className="text-green-600">
               <Link to={"/fwd-entreprise"}>Mot de passe oublié ?</Link>
             </p>

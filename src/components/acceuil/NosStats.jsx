@@ -6,7 +6,7 @@ function NosStats() {
   ];
 
   return (
-    <div className="flex justify-center gap-10 my-10">
+    <div className="flex justify-center items-center gap-10 my-10 max-sm:flex-col">
       <h1></h1>
       {stats.map((stat) => (
         <div

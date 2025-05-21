@@ -31,13 +31,13 @@ function CarouselAccueil() {
   };
 
   return (
-    <div className="relative h-96">
+    <div className="relative h-96 max-sm:h-full">
       <Carousel
         autoPlay
         infiniteLoop
         showThumbs={false}
         showStatus={false}
-        className="rounded-lg shadow-lg overflow-hidden h-96 object-center"
+        className="rounded-lg shadow-lg overflow-hidden h-96 object-center max-sm:h-full max-sm:shadow-none"
       >
         {/* Slides */}
         <div className="relative h-full w-full">
@@ -45,7 +45,7 @@ function CarouselAccueil() {
           <img
             src={image1}
             alt="Slide 1"
-            className="opacity-70 object-cover h-full w-full object-center relative bottom-40"
+            className="opacity-70 object-cover h-full w-full object-center relative bottom-40 max-sm:bottom-0"
           />
         </div>
         <div className="relative h-full w-full">
@@ -53,7 +53,7 @@ function CarouselAccueil() {
           <img
             src={image2}
             alt="Slide 2"
-            className="opacity-70 object-cover h-full w-full object-center relative bottom-40"
+            className="opacity-70 object-cover h-full w-full object-center relative bottom-40 max-sm:bottom-0"
           />
         </div>
         <div className="relative h-full w-full">
@@ -61,7 +61,7 @@ function CarouselAccueil() {
           <img
             src={image3}
             alt="Slide 3"
-            className="opacity-70 object-cover h-full w-full object-center relative bottom-40"
+            className="opacity-70 object-cover h-full w-full object-center relative bottom-40 max-sm:bottom-0"
           />
         </div>
       </Carousel>
@@ -76,7 +76,7 @@ function CarouselAccueil() {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.6 }}
-            className="text-white text-2xl font-bold px-6 py-3 rounded border border-white"
+            className="text-white text-2xl font-bold px-6 py-3 rounded border border-white max-sm:text-nowrap max-sm:text-[10px]"
           >
             {messages[currentMessageIndex]}
           </motion.p>

@@ -99,7 +99,7 @@ function TousOffres() {
   };
 
   return (
-    <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-sm:p-0">
       {offres.map((offre, index) => (
         <motion.div
           key={offre.id}
