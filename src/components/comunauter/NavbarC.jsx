@@ -10,14 +10,12 @@ import profileUser from "../../assets/images/user.png";
 
 export default function NavbarC() {
   const { data: user } = useGetMeQuery();
-  const isCommunity = user?.role === "community";
 
   const isScroll = useScroll();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openNotif, setOpenNotif] = useState(false);
 
   const handleOpenNotif = () => setOpenNotif(!openNotif);
-  const handleLogout = () => alert("Déconnexion réussie");
 
   const [announcements, setAnnouncements] = useState([]);
 
@@ -64,9 +62,8 @@ export default function NavbarC() {
     return () => clearInterval(interval);
   }, [announcements.length]);
 
-  const baseBg = isCommunity ? "bg-green-700" : "bg-blue-900";
   const textColor = isScroll ? "text-black" : "text-white";
-  const bgColor = isScroll ? "bg-white shadow-md" : baseBg;
+  const bgColor = isScroll ? "bg-white shadow-md" : "bg-green-700";
 
   return (
     <div
@@ -110,7 +107,7 @@ export default function NavbarC() {
               className="w-10 h-10 rounded-full object-cover border-2 border-gray-100 shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
             />
 
-            <Dropdown username={user?.full_name} onLogout={handleLogout} />
+            <Dropdown username={user?.full_name} />
 
             {/* Notification Icon */}
             <button
@@ -143,7 +140,7 @@ export default function NavbarC() {
             animate={{ opacity: 1, maxHeight: 300 }}
             exit={{ opacity: 0, maxHeight: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className={`${baseBg} text-white p-4 lg:hidden overflow-hidden`}
+            className="bg-green-700 text-white p-4 lg:hidden overflow-hidden"
           >
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-end gap-4">

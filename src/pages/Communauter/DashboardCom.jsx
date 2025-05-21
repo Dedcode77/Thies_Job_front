@@ -6,6 +6,8 @@ import ComOffre from "../../components/comunauter/ComOfrre";
 import ListesCandidatures from "../../components/comunauter/ListesCandidatures";
 import logo from "../../assets/images/volkeno.png";
 import drapeau from "../../assets/images/drapeau-senegal.jpg";
+import Messages from "../../components/comunauter/Messages";
+import ListesEmployers from "../../components/comunauter/ListesEmployers";
 
 const mockOffers = [
   { id: 1, title: "Développeur React", date: "2025-05-01", status: "En ligne" },
@@ -79,6 +81,11 @@ export default function DashboardCom() {
       <div className="flex gap-6 mb-10">
         <ChartC />
         <Calendrier />
+      </div>
+
+      <div className="flex gap-6 mb-10">
+        <Messages />
+        <ListesEmployers />
       </div>
 
       <ComOffre offers={offers} />

@@ -38,7 +38,7 @@ const SliderCard = () => {
       <h2 className="text-2xl font-bold mb-4 text-blue-900 text-center">
         Nos Partenaires & Sponsors
       </h2>
-      <div className="relative flex overflow-hidden">
+      <div className="relative flex overflow-hidden mt-10">
         <motion.div
           className="flex gap-4"
           variants={sliderVariants}

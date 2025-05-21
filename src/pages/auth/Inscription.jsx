@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { useRegisterMutation } from "../../backend/features/auth/authAPI";
 import { toast } from "react-toastify";
 
+import logoChrome from "../../assets/images/google.png";
+import facebook from "../../assets/images/facebook.png";
+
 function Inscription() {
   const { register, handleSubmit, reset } = useForm();
   const [registerUser, { isLoading }] = useRegisterMutation();
@@ -16,7 +19,7 @@ function Inscription() {
       console.log("Response: ", res);
       if (res) {
         toast.success("Inscription réussie");
-        navigate("/login");
+        navigate("/dashboard");
       }
       reset();
     } catch (error) {
@@ -68,7 +71,7 @@ function Inscription() {
                 {...register("genre", { required: "Ce champ est requis" })}
                 className="w-full border px-3 py-2 rounded outline-blue-600"
               >
-                <option value="">Sélectionnez un genre</option>
+                <option value="">Genre</option>
                 <option value="man">Homme</option>
                 <option value="woman">Femme</option>
               </select>
@@ -116,6 +119,17 @@ function Inscription() {
           >
             {isLoading ? "Chargement..." : "S'inscrire"}
           </button>
+
+          <div className="mt-6 flex flex-col gap-4 justify-center">
+            <button className="px-4 py-2 flex gap-6 items-center justify-center border border-black rounded-md ">
+              <img src={logoChrome} alt="" className="w-8 h-8 object-cover" />
+              <span>Continuer avec Google</span>
+            </button>
+            <button className="px-4 py-2 flex gap-6 items-center justify-center border border-black rounded-md ">
+              <img src={facebook} alt="" className="w-8 h-8 object-cover" />
+              <span>Continuer avec Facebook</span>
+            </button>
+          </div>
 
           <div className="mt-4 text-center">
             <p className="text-gray-600">
