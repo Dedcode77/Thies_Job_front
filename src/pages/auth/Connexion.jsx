@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useLoginMutation } from "../../backend/features/auth/authAPI";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
