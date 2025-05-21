@@ -65,7 +65,7 @@ export default function AnnonceCarousel() {
   }
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto py-10 h-[400px] overflow-hidden">
+    <div className="relative w-full max-w-4xl mx-auto py-10 h-[400px] overflow-hidden">
       {annonces.map((item, index) => (
         <div
           key={item.id}

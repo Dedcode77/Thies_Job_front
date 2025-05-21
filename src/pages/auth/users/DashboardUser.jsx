@@ -13,56 +13,14 @@ import {
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import OffresRecom from "../../../components/OffresRecom";
-
+import AnnonceCarousel from "../../../components/comunauter/AnnonceCarousel";
 
 const DashboardUser = () => {
-  const [isOpenWelcome, setIsOpenWelcome] = useState(false);
-
   return (
     <div className="p-6 min-h-screen max-sm:p-0 max-sm:m-2">
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-blue-900">
-          Tableau de Bord
-        </h2>
-        <div className="flex flex-col lg:flex-row gap-4">
-          <div className="bg-white p-4 rounded-lg shadow-md w-1/2 max-lg:w-full">
-            <h3 className="text-lg font-semibold mb-2">
-              Bienvenue sur votre espace SEN JOB.sn
-            </h3>
-            <p className="text-gray-700 mb-4">
-              Ici, vous trouverez les dernières opportunités d'emploi, vos
-              candidatures en cours et des suggestions pour booster vos
-              compétences. Que vous soyez à la recherche d'un emploi temporaire
-              ou d'une mission longue durée, SEN JOB.sn vous offre une
-              plateforme complète pour explorer, postuler et suivre vos
-              candidatures.
-            </p>
-            <p>
-              Consultez les annonces disponibles et postulez rapidement pour
-              maximiser vos chances ! Ne manquez pas les formations recommandées
-              pour développer de nouvelles compétences et améliorer votre
-              employabilité.
-            </p>
-            {isOpenWelcome && (
-              <p className="text-gray-700 mb-4">
-                Parcourez les annonces actualisées, postulez rapidement pour
-                maximiser vos chances.
-              </p>
-            )}
-            <button
-              onClick={() => setIsOpenWelcome(!isOpenWelcome)}
-              className="px-4 py-2 rounded-md mt-2 flex items-center gap-2 text-blue-500 hover:bg-blue-100 hover:text-blue-700 transition-transform duration-300 ease-in-out hover:translate-y-1"
-            >
-              {isOpenWelcome ? "Moins" : "Plus"}
-              <FontAwesomeIcon
-                icon={isOpenWelcome ? faArrowLeft : faArrowDown}
-              />
-            </button>
-          </div>
-          <div className="w-1/2 max-lg:w-full">
-            <Carousel />
-          </div>
-        </div>
+      <div className="flex items-center gap-8">
+        <AnnonceCarousel />
+        <AnnonceCarousel />
       </div>
 
       <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
