@@ -7,6 +7,9 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "../../backend/features/auth/authSlice";
 import { toast } from "react-toastify";
 
+import logoChrome from "../../assets/images/google.png";
+import facebook from "../../assets/images/facebook.png";
+
 function Connexion() {
   const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
@@ -77,7 +80,7 @@ function Connexion() {
           </h1>
           <div className="mb-4">
             <label className="block text-gray-700 mb-2 font-medium">
-              Nom ou nom structure
+              Email
             </label>
             <input
               type="text"
@@ -112,7 +115,7 @@ function Connexion() {
               </label>
             </div>
             <a
-              href="/mot-de-passe-oublie"
+              href="/fwd-pwd"
               className="text-blue-600 hover:underline text-sm"
             >
               Mot de passe oublié ?
@@ -125,6 +128,17 @@ function Connexion() {
           >
             Se connecter
           </button>
+
+          <div className="mt-6 flex flex-col gap-4 justify-center">
+            <button className="px-4 py-2 flex gap-6 items-center justify-center border border-black rounded-md ">
+              <img src={logoChrome} alt="" className="w-8 h-8 object-cover" />
+              <span>Continuer avec Google</span>
+            </button>
+            <button className="px-4 py-2 flex gap-6 items-center justify-center border border-black rounded-md ">
+              <img src={facebook} alt="" className="w-8 h-8 object-cover" />
+              <span>Continuer avec Facebook</span>
+            </button>
+          </div>
 
           <div className="mt-6 text-center">
             <p className="text-gray-600">

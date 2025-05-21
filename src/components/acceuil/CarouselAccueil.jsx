@@ -8,9 +8,10 @@ import image3 from "../../assets/images/a3.jpg";
 
 function CarouselAccueil() {
   const messages = [
-    "Rejoignez des entreprises innovantes",
-    "Accédez à des offres exclusives",
-    "Postulez en un clic",
+    "Bienvenue sur notre plateforme professionnelle",
+    "Collaborez avec des entreprises innovantes",
+    "Découvrez des opportunités uniques et ciblées",
+    "Postulez rapidement et faites évoluer votre carrière",
   ];
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);

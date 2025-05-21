@@ -24,7 +24,7 @@ const CardOffre = ({ offer, deleteOffre, onVoirOffre, isAccepted }) => {
             onClick={() => deleteOffre(offer.id)}
             className="mt-4 px-4 py-2 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-md transition duration-300"
           >
-            Supprimer
+            Pas interessé
           </button>
         ) : (
           <div className="relative top-1 text-sm text-nowrap">

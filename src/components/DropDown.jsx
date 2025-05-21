@@ -5,7 +5,7 @@ import { faChevronDown, faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../backend/features/auth/authSlice";
-import { useGetMeQuery } from "../backend/features/auth/authAPI";
+import { authApi, useGetMeQuery } from "../backend/features/auth/authAPI";
 
 export default function Dropdown({ username = "Utilisateur" }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +19,8 @@ export default function Dropdown({ username = "Utilisateur" }) {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout()); // vide le token
+    dispatch(authApi.util.resetApiState()); // reset tout le cache des requêtes
     navigate("/login");
   };
 

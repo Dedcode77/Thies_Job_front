@@ -1,3 +1,5 @@
+import { faEye, faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { FaBriefcase } from "react-icons/fa";
 
@@ -42,6 +44,7 @@ export default function ComOffre({ offers }) {
                 <th className="px-6 py-3 border-b">Titre</th>
                 <th className="px-6 py-3 border-b">Date</th>
                 <th className="px-6 py-3 border-b">Statut</th>
+                <th className="px-6 py-3 border-b">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -60,6 +63,17 @@ export default function ComOffre({ offers }) {
                     <span className={getStatusBadge(offer.status)}>
                       {offer.status}
                     </span>
+                  </td>
+                  <td className="px-6 py-4 border-b space-x-3">
+                    <button>
+                      <FontAwesomeIcon icon={faPencil} color="yellow" />
+                    </button>
+                    <button>
+                      <FontAwesomeIcon icon={faEye} color="skyblue" />
+                    </button>
+                    <button>
+                      <FontAwesomeIcon icon={faTrash} color="red" />
+                    </button>
                   </td>
                 </tr>
               ))}

@@ -7,6 +7,9 @@ import { faBars, faBell, faTimes } from "@fortawesome/free-solid-svg-icons";
 import DropNotification from "./DropNotification";
 import { useGetMeQuery } from "../backend/features/auth/authAPI";
 import profileUser from "../assets/images/user.png";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../backend/features/auth/authSlice";
 
 export default function Navbar() {
   const { data: user, isLoading, error } = useGetMeQuery();
@@ -19,8 +22,13 @@ export default function Navbar() {
     setOpenNotif(!openNotif);
   };
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
-    alert("Déconnexion réussie");
+    dispatch(logout());
+    window.location;
+    navigate("/", { replace: true });
   };
 
   const announcements = [
