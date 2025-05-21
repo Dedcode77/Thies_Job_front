@@ -17,11 +17,11 @@ const Offres = () => {
       salaire: "1.5M - 2M FCFA",
       experience: "5+ ans",
       poste: "Nouveau",
-      présenté: true
+      presente: true
     },
     {
       id: 2,
-      title: "gestion de projet",
+      titre: "gestion de projet",
       entreprise: "Eclosio",
       location: "Grand Dakar",
       type: "stage",
@@ -32,7 +32,7 @@ const Offres = () => {
     },
     {
       id: 3,
-      title: "conseil agricole",
+      titre: "conseil agricole",
       entreprise: "ISEP THIES",
       location: "Thiès",
       type: "CDD",
@@ -160,7 +160,7 @@ const Offres = () => {
 
             <div className="grid gap-4">
               {jobs.map((job) => (
-                <div key={job.id} className={`bg-white rounded-lg shadow-sm p-6 ${job.featured ? 'border-l-4 border-blue-500' : ''}`}>
+                <div key={job.id} className={`bg-white rounded-lg shadow-sm p-6 ${job.presente ? 'border-l-4 border-blue-500' : ''}`}>
                   <div className="flex gap-4 items-start">
                     <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
                       <FiBriefcase className="text-gray-400 text-xl" />
@@ -169,8 +169,8 @@ const Offres = () => {
                     <div className="flex-1">
                       <div className="flex justify-between items-start">
                         <div>
-                          <h3 className="text-lg font-semibold">{job.title}</h3>
-                          <p className="text-blue-600 text-sm">{job.company}</p>
+                          <h3 className="text-lg font-semibold">{job.titre}</h3>
+                          <p className="text-blue-600 text-sm">{job.entreprise}</p>
                         </div>
                         <button className="text-gray-400 hover:text-blue-500">
                           <FiStar className="w-5 h-5" />
@@ -184,14 +184,14 @@ const Offres = () => {
                         </div>
                         <div className="flex items-center gap-1">
                           <FiDollarSign className="text-gray-400" />
-                          {job.salary}
+                          {job.salaire}
                         </div>
                         <div className="flex items-center gap-1">
                           <FiClock className="text-gray-400" />
                           {job.experience}
                         </div>
                         <span className="bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs w-fit">
-                          {job.posted}
+                          {job.poste}
                         </span>
                       </div>
                     </div>
