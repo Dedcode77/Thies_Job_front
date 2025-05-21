@@ -17,7 +17,7 @@ const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuItems = [
     { icon: faHome, label: "Dashboard", path: "/dashboard" },
-    { icon: faBriefcase, label: "Offres de Travail", path: "/OffreTravail" },
+    { icon: faBriefcase, label: "Offres de Travail", path: "/offres" },
     { icon: faEnvelope, label: "Mes Postulations", path: "/MesPostulations" },
     { icon: faBell, label: "Notifications", path: "/Notifications" },
     { icon: faFileContract, label: "Mes Contrats", path: "/MesContrats" },

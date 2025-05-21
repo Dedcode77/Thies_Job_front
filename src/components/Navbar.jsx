@@ -10,6 +10,7 @@ import profileUser from "../assets/images/user.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../backend/features/auth/authSlice";
+import logo from "../assets/images/logoSamaAvenir.png";
 
 export default function Navbar() {
   const { data: user, isLoading, error } = useGetMeQuery();
@@ -64,7 +65,11 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-screen-xl mx-auto flex justify-between items-center px-4 h-16">
-        <h1 className="text-2xl font-bold">SEN JOB.sn</h1>
+        <img
+          src={logo}
+          alt="logo-site"
+          className="w-16 h-16 object-cover bg-white"
+        />
 
         {/* Desktop Annonces */}
         <div className="hidden lg:flex items-center gap-4">

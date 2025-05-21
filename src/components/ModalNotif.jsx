@@ -24,10 +24,10 @@ const ModalNotif = ({ offer, onClose, accepterOffre }) => {
             className={`mt-4 px-4 py-2 rounded-md text-white transition duration-300 ${
               offer.accepted
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-green-600 hover:bg-blue-700"
+                : "bg-green-600 hover:bg-green-700"
             }`}
           >
-            {offer.accepted ? "Offre acceptée" : "Accepter l'offre"}
+            {offer.accepted ? "Offre acceptée" : "Postuler"}
           </button>
         </div>
       </div>
