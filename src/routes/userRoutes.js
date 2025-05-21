@@ -1,4 +1,3 @@
-import { path } from "framer-motion/client";
 import DashboardUser from "../pages/auth/users/DashboardUser";
 import ProfileUser from "../pages/auth/users/ProfileUser";
 
