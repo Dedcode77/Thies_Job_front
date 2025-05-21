@@ -42,7 +42,7 @@ const offresFormations = [
 
 export default function Formations() {
   return (
-    <div className="p-6">
+    <div className="p-6 max-sm:p-0">
       <h1 className="text-2xl font-bold text-center mb-6">
         Offres de Formations Disponibles
       </h1>

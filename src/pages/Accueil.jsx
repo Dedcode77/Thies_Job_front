@@ -7,17 +7,21 @@ import NosStats from "../components/acceuil/NosStats";
 import AnnonceCarousel from "../components/comunauter/AnnonceCarousel";
 import logo from "../assets/images/logoSamaAvenir.png";
 import TemoignageCard from "./Communauter/TemoignageCard";
+import FilActualites from "../components/FilActualites";
+import FilActualitessm from "../components/FilActualitessm";
 
 function Accueil() {
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 p-6 max-sm:p-0">
+      <FilActualitessm />
       <nav className="flex justify-between items-center shadow-md mb-4 p-4">
         <img src={logo} alt="" className="w-20 h-20 object-cover" />
-        <button className="bg-blue-600 px-4 py-2 rounded-md text-white ">
+        <FilActualites />
+        <button className="bg-blue-600 px-4 py-2 rounded-md text-white text-nowrap">
           Se connecter
         </button>
       </nav>
-      <div className="mb-10 relative">
+      <div className="mb-10 relative max-sm:p-4">
         <CarouselAccueil />
       </div>
 
@@ -25,7 +29,7 @@ function Accueil() {
         <OffreAccueil />
       </div>
 
-      <div className="mb-10 relative">
+      <div className="mb-10 relative max-sm:p-4">
         <h2 className="text-2xl text-center font-bold mb-4 text-blue-900">
           <span className="inline-flex items-center">
             Nouvelle annonce
